@@ -196,12 +196,13 @@ def main():
             elif choice == '9':
                 save_data(classroom)
             elif choice == '10':
-                # Load replaces current data
+
                 students = load_students_from_csv(DATA_FILE)
-                # Create new classroom
+
                 classroom = Classroom()
                 for s in students:
                     classroom.add_student(s)
+                    # print(f"Student : {s.student_id} , Student : {s.name} , Grade: {s.grade}")
                 print(f"Loaded {len(students)} students from {DATA_FILE}.")
             elif choice == '0':
                 print("Goodbye!")

@@ -31,9 +31,9 @@ def load_students_from_csv(filename: str) -> List[Student]:
             for row in reader:
                 student_id = row['student_id'].strip()
                 name = row['name'].strip()
-                grades_str = row['grades'].strip()
-                if grades_str:
-                    grades = [float(g.strip()) for g in grades_str.split(',') if g.strip()]
+                grades = row['grades'].strip()
+                if grades:
+                    grades = [float(g.strip()) for g in grades.split(',') if g.strip()]
                 else:
                     grades = []
                 student = Student(student_id, name, grades)
@@ -43,6 +43,7 @@ def load_students_from_csv(filename: str) -> List[Student]:
     except Exception as e:
         raise IOError(f"Error reading CSV file: {e}")
     return students
+
 
 
 def save_students_to_csv(filename: str, students: List[Student]):
